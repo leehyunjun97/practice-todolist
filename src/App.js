@@ -49,7 +49,7 @@ function App() {
   const dataId = useRef(4);
 
   const onCreate = (author, content) => {
-    dispatch({ type: 'CREATE', data: { author, content, id: data.current } });
+    dispatch({ type: 'CREATE', data: { author, content, id: dataId.current } });
     // const newItem = {
     //   id: dataId.current,
     //   author,
@@ -60,6 +60,7 @@ function App() {
   };
 
   const onRemove = (targetId) => {
+    console.log(targetId);
     dispatch({ type: 'REMOVE', targetId });
     // setData(data.filter((it) => targetId !== it.id));
     alert(`${targetId}번째 리스트가 삭제되었습니다.!`);
