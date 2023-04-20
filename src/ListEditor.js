@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { ListDispatch } from './App';
 
 const ListEditor = () => {
@@ -10,11 +10,17 @@ const ListEditor = () => {
     content: '',
   });
 
+  const contentRef = useRef();
+
   const { onCreate } = useContext(ListDispatch);
 
   const handleSubmit = () => {
-    onCreate(state.author, state.content);
-    alert('리스트 작성 완료');
+    if (state.content.length < 5) {
+      contentRef.current.focus();
+    } else {
+      onCreate(state.author, state.content);
+      alert('리스트 작성 완료');
+    }
   };
 
   return (
@@ -34,6 +40,7 @@ const ListEditor = () => {
       </div>
       <div>
         <textarea
+          ref={contentRef}
           placeholder='내용'
           name='content'
           value={state.content}
