@@ -12,6 +12,11 @@ const ListItem = ({ author, content, id }) => {
     console.log('뭐 안바뀌노', editTo);
   };
 
+  const handleSaveEdit = () => {
+    setEditTo(!editTo);
+    setNewContent(content);
+  };
+
   return (
     <div className='ListItem'>
       <span>작성자 : {author}</span>
@@ -42,7 +47,7 @@ const ListItem = ({ author, content, id }) => {
           </button>
           <button
             onClick={() => {
-              handleEditTo();
+              handleSaveEdit();
             }}
           >
             수정취소
