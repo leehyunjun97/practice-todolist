@@ -26,7 +26,7 @@ export const ListDispatch = React.createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case 'CREATE':
-      return [...action.data, state];
+      return [action.data, ...state];
 
     case 'REMOVE':
       return state.filter((it) => it.id !== action.targetId);
