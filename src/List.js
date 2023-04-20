@@ -1,16 +1,14 @@
 import { useContext } from 'react';
-import { ListStateContext } from './App';
 import ListItem from './ListItem';
+import { ListStateContext } from './App';
 
 const List = () => {
   const list = useContext(ListStateContext);
-  // console.log(list);
-  list.map((it) => {
-    console.log(it);
-  });
+
   return (
     <div className='List'>
-      <h2>TODO LIST</h2>
+      <h3>게시판</h3>
+      <h4>{list.length}개의 게시글이 있습니다.</h4>
       <div>
         {list.map((it) => (
           <ListItem key={it.id} {...it} />
@@ -18,10 +16,6 @@ const List = () => {
       </div>
     </div>
   );
-};
-
-List.defualtProps = {
-  list: [],
 };
 
 export default List;
